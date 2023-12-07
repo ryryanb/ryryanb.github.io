@@ -491,6 +491,30 @@ body {
   .contact-form-container {
     max-width: 17.75rem;
   }
+
+  .hero img {
+    display: none;
+  }
+
+  .more-about {
+  width: 100%;
+  margin-left: unset;
+
+}
+
+body {
+    background-image: url('../images/background1.jpg');
+}
+
+  .project-card {
+    box-sizing: unset;
+    background-color: unset;
+    box-shadow: unset;
+  }
+
+  .project-pic {
+    display:none;
+  }
 } 
 
 
