@@ -130,6 +130,8 @@ nav ul li {
   width: 20rem;
   padding: 1rem;
   margin-right:5rem;
+  max-width: 100%;
+
   
 }
 
@@ -147,6 +149,14 @@ nav ul li {
 .bio h1 {
   margin-bottom: var(--bottom-margin);
 }
+
+ .bio {
+   /* background-color: var(--bg-color);*/
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
+    font-size: 102%;
+    font-weight: bold;
+    text-align: justify-all;
+  }
 
 .bio p {
   line-height: var(--line-height);
@@ -190,6 +200,7 @@ nav ul li {
 
 .skills-wrapper img {
   padding: 1.25rem;
+  max-width: 100%;
 }
 
 .icon {
@@ -347,9 +358,48 @@ footer {
   height: 3rem;
 }
 
+.more-about {
+  width: 80%;
+  margin-left: 8%;
+  text-align: justify;
+}
+
 @media screen and (max-width: 720px) {
   nav {
     padding: 1.5rem 1rem;
+  }
+
+  .hero img {
+    display: none;
+  }
+
+  .more-about {
+  width: 100%;
+  margin-left: unset;
+
+}
+
+body {
+    background-image: url('../images/background1.jpg');
+}
+
+  .project-card {
+    box-sizing: unset;
+    background-color: unset;
+    box-shadow: unset;
+  }
+
+.bio {
+    background-color: var(--bg-color);
+
+  }
+
+  .project-pic {
+    display:none;
+  }
+
+  #about {
+    margin-top:25%;
   }
 
   nav ul {
@@ -385,6 +435,7 @@ footer {
   .hero img {
         height: 37.5rem;
         width: 30rem;
+        max-width: 100%;
     }
 
   .bio {
@@ -426,6 +477,7 @@ footer {
   .hero img {
     height: 37.5rem;
     width: 23rem;
+    max-width: 100%;
   }
 
   .bio {
