@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Learning Tool</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        #quiz-container {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #fff;
+        }
+
+        #question {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        #options {
+            display: flex;
+            justify-content: center;
+        }
+
+        .option {
+            margin: 0 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .option:hover {
+            background-color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+
+<div id="quiz-container">
+    <h1>Language Learning Quiz</h1>
+    <div id="question"></div>
+    <div id="options"></div>
+    <button onclick="nextQuestion()">Next Question</button>
+</div>
+
+<script>
+    const quizData = [
+    {
+    question: "1. How do you say 'Hello' in Taiwanese?",
+    options: ["Li-ho", "Hó-ló", "A-ló", "Ní hǎo"],
+    correctAnswer: "Li-ho"
+  },
+  {
+    question: "2. What does 'Li-ho' mean?",
+    options: ["Goodbye", "Hello", "Thank you", "Excuse me"],
+    correctAnswer: "Hello"
+  },
+  {
+    question: "3. How do you express gratitude by saying 'Thank you'?",
+    options: ["Kòo-è", "Soo-ee", "Kháu-nn", "Khahp-jia"],
+    correctAnswer: "Kháu-nn"
+  },
+  {
+    question: "4. What is the informal way to say 'Excuse me'?",
+    options: ["Jiā-pái", "Dì-ló", "Kháu-nn", "Bô̤-khì"],
+    correctAnswer: "Bô̤-khì"
+  },
+  {
+    question: "5. How do you ask 'What is your name?'",
+    options: ["Lí tsí-miā", "Khah-pē", "Sí-lí tsò-bē", "Khó-ló"],
+    correctAnswer: "Lí tsí-miā"
+  },
+  {
+    question: "6. If you want to say 'My name is John,' how would you say it?",
+    options: ["Tsánn tī Jīnn", "Góa sī John", "Siūnn tsí-miā Jīnn", "Góa buē chū"],
+    correctAnswer: "Góa sī John"
+  },
+  {
+    question: "7. What is the common way to say 'Yes'?",
+    options: ["Ho", "Bô̤", "Jîn-tiong", "Lí hó"],
+    correctAnswer: "Ho"
+  },
+  {
+    question: "8. How do you say 'No'?",
+    options: ["Jîn-tiong", "Si̍t-hó", "Bô̤", "Li-ho"],
+    correctAnswer: "Bô̤"
+  },
+  {
+    question: "9. What does 'Bô̤-khì' mean?",
+    options: ["I'm sorry", "Thank you", "Excuse me", "Goodbye"],
+    correctAnswer: "Excuse me"
+  },
+  {
+    question: "10. How do you ask 'Where is the bathroom?'",
+    options: ["Chhùn-ōe kóng-á", "Phūn-tsing pē", "Kiò chē-ko", "Chia̍h-pán chū-bīn"],
+    correctAnswer: "Chhùn-ōe kóng-á"
+  },
+   {
+    question: "1. Táiwān de shǒudū shì nǎlǐ?",
+    options: ["Táiběi", "Gāoxióng", "Táizhōng", "Jiāyì"],
+    correctAnswer: "Táiběi"
+  },
+  {
+    question: "2. Táiwān zuìzhōng de gāosù gōnglù shì?",
+    options: ["Nántóu Héhuān Lù", "Huáyǔ 61 Hào Gāosù Gōnglù", "Zhōngshān Gāosù Gōnglù", "Hēilóngjiāng Yīngbīn Lù"],
+    correctAnswer: "Huáyǔ 61 Hào Gāosù Gōnglù"
+  },
+  {
+    question: "3. Táiwān zuìyǒu méilì de huāshān shì?",
+    options: ["A Lǐ Shān", "Yùshān", "Jiùfèn", "Xiǎofǎměi Shān"],
+    correctAnswer: "A Lǐ Shān"
+  },
+  {
+    question: "4. Táiwān de quánshì biānchéng shì?",
+    options: ["Táiběi", "Jiāyì", "Gāoxióng", "Táizhōng"],
+    correctAnswer: "Táiběi"
+  },
+  {
+    question: "5. Táiwān de guójiā gōngyuán shì?",
+    options: ["Yángmíngshān Guójiā Gōngyuán", "A Lǐ Shān Guójiā Gōngyuán", "Taroko Guójiā Gōngyuán", "Shuǐlǐ Tiāntán Guójiā Gōngyuán"],
+    correctAnswer: "Taroko Guójiā Gōngyuán"
+  },
+  {
+    question: "6. Táiwān de chūnjié jìnɡdiàn shì?",
+    options: ["Shēngzhēn Wénhuà Fēnɡ", "Jiùfèn Yòusījié", "Hòuhǎi Yèshì", "Píngxī Xīngguāng Fēnɡ"],
+    correctAnswer: "Píngxī Xīngguāng Fēnɡ"
+  },
+  {
+    question: "7. Táiwān de chuántǒng dàoist mǐsè shì?",
+    options: ["Lùdòng Yíngkòu", "Jiǔgōng Shénmiào", "Bāyì Shènzūmiào", "Zhānpíng Dàguān Shénmiào"],
+    correctAnswer: "Zhānpíng Dàguān Shénmiào"
+  },
+  {
+    question: "8. Táiwān de biànmǎ huì?",
+    options: ["Zhūlóng Yīshù Jì Biànmǎ Huì", "Mǎdòu Yīshù Jì Biànmǎ Huì", "Táinán Zhīyì Měishù Cāochǎng", "Hòuzhōng Měishù Cūn"],
+    correctAnswer: "Zhūlóng Yīshù Jì Biànmǎ Huì"
+  },
+  {
+    question: "9. Táiwān de bùdào shì?",
+    options: ["Qīnghuá Dào", "Bādà Dào", "Zhèngchéng Dào", "Guānghuá Dào"],
+    correctAnswer: "Bādà Dào"
+  },
+  {
+    question: "10. Táiwān de nóngyè shì?",
+    options: ["Shuǐguǒ Xiàn", "Dōngshī Huǒchāo", "Fēnglín Huāxiāng", "Bǎoquán Yīshù Cūn"],
+    correctAnswer: "Dōngshī Huǒchāo"
+  },
+     {
+    question: "1. 中国的首都是哪里？",
+    options: ["上海", "广州", "北京", "重庆"],
+    correctAnswer: "北京"
+  },
+  {
+    question: "2. 世界上最长的河流是哪条？",
+    options: ["尼罗河", "长江", "亚马逊河", "密西西比河"],
+    correctAnswer: "亚马逊河"
+  },
+  {
+    question: "3. 太阳系中最小的行星是？",
+    options: ["水星", "金星", "地球", "火星"],
+    correctAnswer: "水星"
+  },
+  {
+    question: "4. 鲁迅的原名是？",
+    options: ["周树人", "郭沫若", "茅盾", "巴金"],
+    correctAnswer: "周树人"
+  },
+  {
+    question: "5. 《红楼梦》是谁写的？",
+    options: ["曹雪芹", "施耐庵", "吴承恩", "罗贯中"],
+    correctAnswer: "曹雪芹"
+  },
+  {
+    question: "6. 世界上最高的山峰是？",
+    options: ["喜马拉雅山", "安第斯山", "阿尔卑斯山", "乞力马扎罗"],
+    correctAnswer: "喜马拉雅山"
+  },
+  {
+    question: "7. 中国的四大发明不包括？",
+    options: ["指南针", "火药", "纸张", "印刷术"],
+    correctAnswer: "纸张"
+  },
+  {
+    question: "8. 汉字“日”有几画？",
+    options: ["3画", "4画", "5画", "6画"],
+    correctAnswer: "4画"
+  },
+  {
+    question: "9. 《三国演义》的作者是？",
+    options: ["罗贯中", "施耐庵", "曹雪芹", "吴承恩"],
+    correctAnswer: "罗贯中"
+  },
+  {
+    question: "10. 青岛是哪个省的城市？",
+    options: ["浙江", "山东", "江苏", "广东"],
+    correctAnswer: "山东"
+  },
+  {
+    question: "11. 西湖位于哪个城市？",
+    options: ["上海", "南京", "杭州", "苏州"],
+    correctAnswer: "杭州"
+  },
+  {
+    question: "12. 世界上最长的城市是？",
+    options: ["墨西哥城", "北京", "伊斯坦布尔", "莫斯科"],
+    correctAnswer: "墨西哥城"
+  },
+  {
+    question: "13. 中国的国花是？",
+    options: ["牡丹", "桂花", "梅花", "荷花"],
+    correctAnswer: "牡丹"
+  },
+  {
+    question: "14. 《水浒传》的作者是？",
+    options: ["曹雪芹", "罗贯中", "施耐庵", "吴承恩"],
+    correctAnswer: "施耐庵"
+  },
+  {
+    question: "15. 欧洲最大的湖泊是？",
+    options: ["切尔诺贝利湖", "巴尔喀什湖", "拉多加湖", "贝加尔湖"],
+    correctAnswer: "拉多加湖"
+  },
+  {
+    question: "16. 《红楼梦》中的贾宝玉是哪个人物的扮演者？",
+    options: ["林志颖", "范冰冰", "霍建华", "王力宏"],
+    correctAnswer: "霍建华"
+  },
+  {
+    question: "17. 世界上最长的城市墙是？",
+    options: ["长城", "伦敦塔", "金门城墙", "罗马城墙"],
+    correctAnswer: "长城"
+  },
+  {
+    question: "18. 中国的最高峰是？",
+    options: ["珠穆朗玛峰", "干城章嘉峰", "卓奥友峰", "希夏邦马峰"],
+    correctAnswer: "珠穆朗玛峰"
+  },
+  {
+    question: "19. 《西游记》中的孙悟空是哪个人物的扮演者？",
+    options: ["周杰伦", "梁朝伟", "成龙", "李连杰"],
+    correctAnswer: "成龙"
+  },
+  {
+    question: "20. 世界上最大的大洋是？",
+    options: ["太平洋", "大西洋", "印度洋", "北冰洋"],
+    correctAnswer: "太平洋"
+  },
+  {
+    question: "21. 中国的第一座电影院是？",
+    options: ["大光明电影院", "百老汇电影院", "中央电影院", "卢米埃兄弟电影院"],
+    correctAnswer: "大光明电影院"
+  },
+  {
+    question: "22. 世界上最大的动物是？",
+    options: ["大象", "蓝鲸", "长颈鹿", "犀牛"],
+    correctAnswer: "蓝鲸"
+  },
+  {
+    question: "23. 中国古代四大发明之一是？",
+    options: ["印刷术", "火药", "指南针", "造纸术"],
+    correctAnswer: "造纸术"
+  },
+  {
+    question: "24. 《射雕英雄传》的作者是？",
+    options: ["金庸", "古龙", "梁羽生", "萧鼎"],
+    correctAnswer: "金庸"
+  },
+  {
+    question: "25. 亚洲最大的河流是？",
+    options: ["黄河", "长江", "伊拉瓜苏河", "恒河"],
+    correctAnswer: "长江"
+  },
+  {
+    question: "26. 中国的国家动物是？",
+    options: ["大熊猫", "东北虎", "藏羚羊", "金丝猴"],
+    correctAnswer: "大熊猫"
+  },
+  {
+    question: "27. 世界上最大的岛屿是？",
+    options: ["澳大利亚", "格陵兰岛", "新几内亚", "印度尼西亚"],
+    correctAnswer: "格陵兰岛"
+  },
+  {
+    question: "28. 《天龙八部》的作者是？",
+    options: ["金庸", "古龙", "梁羽生", "萧鼎"],
+    correctAnswer: "金庸"
+  },
+  {
+    question: "29. 中国的第一部长篇小说是？",
+    options: ["红楼梦", "西游记", "三国演义", "水浒传"],
+    correctAnswer: "红楼梦"
+  },
+  {
+    question: "30. 世界上最大的沙漠是？",
+    options: ["撒哈拉沙漠", "腾格里沙漠", "华北平原", "澳大利亚沙漠"],
+    correctAnswer: "撒哈拉沙漠"
+  },
+  {
+    question: "31. 中国的国家花是？",
+    options: ["牡丹", "菊花", "玫瑰", "梅花"],
+    correctAnswer: "梅花"
+  } ];
+
+    let currentQuestionIndex = 0;
+
+    function loadQuestion() {
+        const questionElement = document.getElementById('question');
+        const optionsContainer = document.getElementById('options');
+        const currentQuestion = quizData[currentQuestionIndex];
+
+        questionElement.textContent = currentQuestion.question;
+
+        optionsContainer.innerHTML = '';
+        currentQuestion.options.forEach((option, index) => {
+            const optionElement = document.createElement('div');
+            optionElement.classList.add('option');
+            optionElement.textContent = option;
+            optionElement.addEventListener('click', () => checkAnswer(index));
+            optionsContainer.appendChild(optionElement);
+        });
+    }
+
+    function checkAnswer(selectedIndex) {
+        const currentQuestion = quizData[currentQuestionIndex];
+        const selectedOption = currentQuestion.options[selectedIndex];
+
+        if (selectedOption === currentQuestion.correctAnswer) {
+            alert('Correct! 🎉');
+        } else {
+            alert(`Wrong! The correct answer is: ${currentQuestion.correctAnswer}`);
+        }
+
+        currentQuestionIndex++;
+        if (currentQuestionIndex < quizData.length) {
+            loadQuestion();
+        } else {
+            alert('Quiz completed! 🎉');
+            resetQuiz();
+        }
+    }
+
+    function nextQuestion() {
+        if (currentQuestionIndex < quizData.length) {
+            loadQuestion();
+        } else {
+            alert('Quiz completed! 🎉');
+            resetQuiz();
+        }
+    }
+
+    function resetQuiz() {
+        currentQuestionIndex = 0;
+        loadQuestion();
+    }
+
+    // Initial load
+    loadQuestion();
+</script>
+
+</body>
+</html>

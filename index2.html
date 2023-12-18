@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slideshow Lightbox Image Gallery</title>
+    <style>
+        body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+    padding: 16px;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.lightbox-container {
+  
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Ensure arrows won't overflow */
+}
+
+.lightbox-container img {
+    max-width: 800px; /* Set a specific max-width for a larger image */
+    max-height: 600px; /* Set a specific max-height for a larger image */
+    width: auto;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.lightbox-navigation {
+    position: absolute;
+    top: 50%;
+    font-size: 24px;
+    color: #777;
+    cursor: pointer;
+    user-select: none;
+    background: none;
+    border: none;
+}
+
+.lightbox-navigation-left {
+    left: 25%; /* Adjust this value to move the left arrow closer to the center */
+    transform: translateX(-50%);
+}
+
+.lightbox-navigation-right {
+    right: 25%; /* Adjust this value to move the right arrow closer to the center */
+    transform: translateX(50%);
+}
+
+
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const gallery = document.querySelector('.gallery');
+            let currentIndex = 0;
+            let images = [];
+
+            // Function to update images
+            function updateImages() {
+                // Fetch random images from Lorem Picsum or your preferred image service
+                images = Array.from({ length: 20 }, (_, index) => `https://picsum.photos/400/300?random=${index + 1}`);
+
+                // Clear existing gallery content
+                gallery.innerHTML = '';
+
+                // Update image sources in the gallery
+                images.forEach((imageUrl, index) => {
+                    // Create image element
+                    const image = document.createElement('img');
+                    image.src = imageUrl;
+                    image.alt = `Image ${index + 1}`;
+                    image.id = `image-${index + 1}`;
+
+                    // Add click event listener to open the lightbox
+                    image.addEventListener('click', function () {
+                        currentIndex = index;
+                        openLightbox();
+                    });
+
+                    // Append image to the gallery
+                    gallery.appendChild(image);
+                });
+            }
+
+            // Function to open the lightbox
+            function openLightbox() {
+                // Create lightbox container
+                const lightboxContainer = document.createElement('div');
+                lightboxContainer.classList.add('lightbox-container');
+
+                // Create lightbox image
+                const lightboxImg = document.createElement('img');
+                lightboxImg.src = images[currentIndex];
+                lightboxImg.alt = `Image ${currentIndex + 1}`;
+
+                // Create slideshow controls
+                const slideshowControls = document.createElement('div');
+                slideshowControls.classList.add('slideshow-controls');
+                slideshowControls.innerHTML = `
+                    <button onclick="showPrevImage()">Previous</button>
+                    <button onclick="toggleSlideshow()">Toggle Slideshow</button>
+                    <button onclick="showNextImage()">Next</button>
+                `;
+
+                // Append elements to the lightbox container
+                lightboxContainer.appendChild(lightboxImg);
+                lightboxContainer.appendChild(slideshowControls);
+
+                // Display the lightbox
+                document.body.appendChild(lightboxContainer);
+            }
+
+            // Slideshow related functions
+            let slideshowInterval;
+            let slideshowActive = false;
+
+            function toggleSlideshow() {
+                if (slideshowActive) {
+                    stopSlideshow();
+                } else {
+                    startSlideshow();
+                }
+            }
+
+            function startSlideshow() {
+                slideshowActive = true;
+                slideshowInterval = setInterval(showNextImage, 3000); // Change the interval as needed
+            }
+
+            function stopSlideshow() {
+                slideshowActive = false;
+                clearInterval(slideshowInterval);
+            }
+
+            function showNextImage() {
+                currentIndex = (currentIndex + 1) % images.length;
+                updateLightboxImage();
+            }
+
+            function showPrevImage() {
+                currentIndex = (currentIndex - 1 + images.length) % images.length;
+                updateLightboxImage();
+            }
+
+            function updateLightboxImage() {
+                const lightboxImg = document.querySelector('.lightbox-container img');
+                lightboxImg.src = images[currentIndex];
+                lightboxImg.alt = `Image ${currentIndex + 1}`;
+            }
+
+            // Initial update (preloading images)
+            updateImages();
+
+            // Update images every minute (adjust the interval as needed)
+            setInterval(updateImages, 60000);
+        });
+    </script>
+</head>
+<body>
+
+    <!-- Your gallery HTML structure -->
+    <div class="gallery">
+        <!-- Images will be dynamically added here -->
+    </div>
+</body>
+</html>

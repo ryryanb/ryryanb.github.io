@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Events Notifier</title>
+</head>
+<body>
+    <h1>Local Events Notifier</h1>
+
+    <button onclick="getEvents()">Get Local Events</button>
+
+    <div id="eventsContainer">
+        <!-- Events will be displayed here -->
+    </div>
+
+    <script>
+        function getEvents() {
+            const eventbriteApiKey = 'YOUR_EVENTBRITE_API_KEY';
+            const targetLocation = 'San Francisco';
+            const radius = 10;
+            const days = 7;
+
+            const endpoint = `https://www.eventbriteapi.com/v3/events/search/?location.address=${targetLocation}&location.within=${radius}km&start_date.range_start=${new Date().toISOString()}&start_date.range_end=${new Date(new Date().getTime() + days * 24 * 60 * 60 * 1000).toISOString()}&sort_by=date`;
+
+            fetch(endpoint, {
+                headers: {
+                    'Authorization': `Bearer ${eventbriteApiKey}`,
+                },
+            })
+                .then(response => response.json())
+                .then(data => {
+                    const eventsContainer = document.getElementById('eventsContainer');
+                    eventsContainer.innerHTML = '';
+
+                    const events = data.events || [];
+
+                    if (events.length > 0) {
+                        const ul = document.createElement('ul');
+                        events.forEach(event => {
+                            const li = document.createElement('li');
+                            li.innerHTML = `
+                                <strong>Event:</strong> ${event.name.text} <br>
+                                <strong>Date:</strong> ${event.start.local} <br>
+                                <strong>URL:</strong> <a href="${event.url}" target="_blank">${event.url}</a>
+                                <hr>
+                            `;
+                            ul.appendChild(li);
+                        });
+                        eventsContainer.appendChild(ul);
+                    } else {
+                        eventsContainer.innerHTML = '<p>No events found.</p>';
+                    }
+                })
+                .catch(error => console.error('Error fetching events:', error));
+        }
+    </script>
+</body>
+</html>

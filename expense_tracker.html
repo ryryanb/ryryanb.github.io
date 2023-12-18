@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.5/xlsx.full.min.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #expense-container {
+            text-align: center;
+        }
+
+        #expenses-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #expenses-list li {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div id="expense-container">
+    <h1>Expense Tracker</h1>
+    <label for="expense">Enter Expense:</label>
+    <input type="text" id="expense" placeholder="Expense description">
+    <input type="number" id="amount" placeholder="Amount">
+    <button onclick="addExpense()">Add Expense</button>
+    <button onclick="exportToExcel()">Export to Excel</button>
+
+    <h2>Expenses</h2>
+    <ul id="expenses-list"></ul>
+
+    <h3>Total Expenses: $<span id="total-expenses">0.00</span></h3>
+</div>
+
+<script>
+    // Expense data array
+    const expenses = [];
+
+    // Function to add an expense
+    function addExpense() {
+        const expenseDescription = document.getElementById('expense').value;
+        const amount = parseFloat(document.getElementById('amount').value);
+
+        // Validate input
+        if (!expenseDescription || isNaN(amount) || amount <= 0) {
+            alert('Please enter a valid expense description and amount.');
+            return;
+        }
+
+        // Add expense to the array with the current date
+        const currentDate = new Date();
+        expenses.push({ description: expenseDescription, amount: amount, date: currentDate.toLocaleDateString() });
+
+        // Update UI
+        updateUI();
+    }
+
+    // Function to update the UI
+    function updateUI() {
+        const expensesList = document.getElementById('expenses-list');
+        const totalExpensesElement = document.getElementById('total-expenses');
+
+        // Clear the current list
+        expensesList.innerHTML = '';
+
+        // Calculate total expenses
+        const totalExpenses = expenses.reduce((total, expense) => total + expense.amount, 0);
+
+        // Update total expenses in the UI
+        totalExpensesElement.textContent = totalExpenses.toFixed(2);
+
+        // Update the list of expenses
+        expenses.forEach(expense => {
+            const listItem = document.createElement('li');
+            listItem.textContent = `${expense.date}: ${expense.description}: $${expense.amount.toFixed(2)}`;
+            expensesList.appendChild(listItem);
+        });
+
+        // Clear input fields
+        document.getElementById('expense').value = '';
+        document.getElementById('amount').value = '';
+    }
+
+    // Function to export expenses to Excel
+    function exportToExcel() {
+        const ws = XLSX.utils.json_to_sheet(expenses);
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, 'Expenses');
+        XLSX.writeFile(wb, 'expenses.xlsx');
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostel Finder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        #search-container {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #fff;
+        }
+
+        #results {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="search-container">
+    <h1>Hostel Finder</h1>
+    <label for="location">Location:</label>
+    <input type="text" id="location" placeholder="Enter city or destination">
+    <br>
+    <label for="budget">Budget:</label>
+    <input type="number" id="budget" placeholder="Enter budget per night">
+    <br>
+    <button onclick="searchHostels()">Search Hostels</button>
+</div>
+
+<div id="results"></div>
+
+<script>
+    async function searchHostels() {
+        const location = document.getElementById('location').value;
+        const budget = document.getElementById('budget').value;
+
+        // Validate input
+        if (!location || !budget) {
+            alert('Please enter both location and budget.');
+            return;
+        }
+
+        // Simulate API call or fetch data from a hostel API
+        const hostels = await fetchHostels(location, budget);
+
+        // Display results
+        displayResults(hostels);
+    }
+
+    async function fetchHostels(location, budget) {
+        // Simulate fetching data from an API
+        // In a real application, you would make an HTTP request to a server or third-party API
+        // For demonstration purposes, we'll use a simple array of hostels
+        const response = await fetch('hostel-data.json');
+        const hostels = await response.json();
+        
+        // Filter hostels based on location and budget
+        const filteredHostels = hostels.filter(hostel =>
+            hostel.location.toLowerCase().includes(location.toLowerCase()) &&
+            hostel.price <= budget
+        );
+
+        return filteredHostels;
+    }
+
+    function displayResults(hostels) {
+        const resultsContainer = document.getElementById('results');
+        resultsContainer.innerHTML = '';
+
+        if (hostels.length === 0) {
+            resultsContainer.innerHTML = '<p>No hostels found. Try adjusting your search criteria.</p>';
+            return;
+        }
+
+        hostels.forEach(hostel => {
+            const hostelCard = document.createElement('div');
+            hostelCard.classList.add('hostel-card');
+            hostelCard.innerHTML = `
+                <h3>${hostel.name}</h3>
+                <p>Location: ${hostel.location}</p>
+                <p>Price per night: $${hostel.price}</p>
+                <p>Rating: ${hostel.rating}/5</p>
+            `;
+            resultsContainer.appendChild(hostelCard);
+        });
+    }
+</script>
+
+</body>
+</html>
