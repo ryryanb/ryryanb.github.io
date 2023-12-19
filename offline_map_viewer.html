@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline Map Viewer</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        #map {
+            width: 100%;
+            max-width: 800px;
+            height: 400px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Offline Map Viewer</h2>
+
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        // Sample map coordinates (you can replace these with your own)
+        const initialCoordinates = [51.505, -0.09];
+        const initialZoomLevel = 13;
+
+        // Initialize the map
+        const map = L.map('map').setView(initialCoordinates, initialZoomLevel);
+
+        // Add a tile layer (you can replace the URL with your own offline tiles)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Sample marker (you can customize this based on your needs)
+        const marker = L.marker(initialCoordinates).addTo(map);
+
+        // Function to handle map download (replace this with your offline map functionality)
+        function downloadMap() {
+            alert('Map downloaded for offline use!');
+            // Add your offline map download logic here
+        }
+
+        // Button to trigger map download
+        const downloadButton = document.createElement('button');
+        downloadButton.textContent = 'Download Map';
+        downloadButton.addEventListener('click', downloadMap);
+        document.body.appendChild(downloadButton);
+    </script>
+
+</body>
+</html>

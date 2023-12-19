@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Health Guide</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        #locations {
+            width: 100%;
+            max-width: 400px;
+            margin-bottom: 20px;
+        }
+
+        #health-info {
+            width: 100%;
+            max-width: 600px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Travel Health Guide</h2>
+
+    <label for="locations">Select Location:</label>
+    <select id="locations">
+        <option value="europe">Europe</option>
+        <option value="asia">Asia</option>
+        <option value="africa">Africa</option>
+        <!-- Add more location options as needed -->
+    </select>
+
+    <div id="health-info">
+        <h3>Health Information</h3>
+        <p id="vaccinations">Vaccinations: Check with your healthcare provider for recommended vaccinations.</p>
+        <p id="tips">Health Tips: Stay hydrated, practice good hygiene, and be aware of local health concerns.</p>
+    </div>
+
+    <script>
+        document.getElementById('locations').addEventListener('change', function() {
+            const selectedLocation = this.value;
+            updateHealthInfo(selectedLocation);
+        });
+
+        function updateHealthInfo(location) {
+            const vaccinationsElement = document.getElementById('vaccinations');
+            const tipsElement = document.getElementById('tips');
+
+            // Update health information based on the selected location
+            switch (location) {
+                case 'europe':
+                    vaccinationsElement.textContent = 'Vaccinations: Hepatitis A, Hepatitis B, Measles, and routine vaccines.';
+                    tipsElement.textContent = 'Health Tips: Stay hydrated, practice good hygiene, and be aware of tick-borne diseases.';
+                    break;
+                case 'asia':
+                    vaccinationsElement.textContent = 'Vaccinations: Typhoid, Hepatitis A, Japanese encephalitis, and routine vaccines.';
+                    tipsElement.textContent = 'Health Tips: Drink bottled water, be cautious with street food, and take malaria precautions.';
+                    break;
+                case 'africa':
+                    vaccinationsElement.textContent = 'Vaccinations: Yellow fever, Typhoid, Hepatitis A, and routine vaccines.';
+                    tipsElement.textContent = 'Health Tips: Take malaria prophylaxis, avoid mosquito bites, and drink purified water.';
+                    break;
+                // Add more cases for additional locations
+                default:
+                    vaccinationsElement.textContent = 'Vaccinations: Check with your healthcare provider for recommended vaccinations.';
+                    tipsElement.textContent = 'Health Tips: Stay informed about local health risks and seek medical advice.';
+            }
+        }
+
+        // Initial update based on default location
+        updateHealthInfo(document.getElementById('locations').value);
+    </script>
+
+</body>
+</html>

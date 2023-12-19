@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Resource Aggregator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        #resources {
+            width: 100%;
+            max-width: 600px;
+            text-align: left;
+        }
+
+        .resource {
+            margin-bottom: 10px;
+        }
+
+        .resource a {
+            text-decoration: none;
+            color: #007BFF;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Travel Resource Aggregator</h2>
+
+    <div id="resources">
+        <!-- Resources will be dynamically added here -->
+    </div>
+
+    <script>
+        // Sample data for resources
+        const travelResources = [
+            { title: 'Travel Blog 1', link: 'https://www.example.com/blog1' },
+            { title: 'Travel Tool 1', link: 'https://www.example.com/tool1' },
+            { title: 'Travel Blog 2', link: 'https://www.example.com/blog2' },
+            { title: 'Travel Tool 2', link: 'https://www.example.com/tool2' },
+            // Add more resources as needed
+        ];
+
+        // Function to dynamically generate resource elements
+        function generateResources() {
+            const resourcesElement = document.getElementById('resources');
+
+            // Clear existing content
+            resourcesElement.innerHTML = '';
+
+            // Loop through the travel resources and create elements
+            travelResources.forEach(resource => {
+                const resourceElement = document.createElement('div');
+                resourceElement.classList.add('resource');
+
+                const linkElement = document.createElement('a');
+                linkElement.href = resource.link;
+                linkElement.textContent = resource.title;
+
+                resourceElement.appendChild(linkElement);
+                resourcesElement.appendChild(resourceElement);
+            });
+        }
+
+        // Initial generation of resources on page load
+        generateResources();
+    </script>
+
+</body>
+</html>
