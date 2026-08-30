@@ -1,330 +1,646 @@
 <!DOCTYPE html>
+
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!--CSS Styles -->
-    <link rel="stylesheet" href="assets/css/styles.css" />
 
-    <!-- Favicons -->
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="assets/icons/apple-touch-icon.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="assets/icons/favicon-32x32.png"
-    />
+<title>Ryan Rey Bondoc | Senior Backend Engineer</title>
 
-    <!-- Animate CSS CDN -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
-    <title>Ryan Rey Bondoc | Senior Backend Engineer</title>
+<meta
+  name="description"
+  content="Ryan Rey Bondoc is a Senior Backend Engineer with 15+ years of experience building Java, Spring Boot, microservices, REST APIs, distributed systems, and AI-powered applications."
+/>
+<meta
+  name="keywords"
+  content="Senior Backend Engineer, Java, Spring Boot, Microservices, Distributed Systems, REST APIs, PostgreSQL, Docker, AI Engineering"
+/>
+<meta name="author" content="Ryan Rey Bondoc" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Ryan Rey Bondoc | Senior Backend Engineer" />
+<meta
+  property="og:description"
+  content="Senior Backend Engineer specializing in Java, Spring Boot, microservices, distributed systems, and AI-powered applications."
+/>
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://ryryanb.github.io/" />
+
+<!-- CSS -->
+<link rel="stylesheet" href="assets/css/styles.css" />
+
+<!-- Favicons -->
+<link
+  rel="apple-touch-icon"
+  sizes="180x180"
+  href="assets/icons/apple-touch-icon.png"
+/>
+<link
+  rel="icon"
+  type="image/png"
+  sizes="32x32"
+  href="assets/icons/favicon-32x32.png"
+/>
+
+<!-- Animate CSS -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+/>
+
+
   </head>
 
   <body>
-    <!-- Navbar -->
-    <nav>
-      <h1>RYAN REY BONDOC</h1>
-      <h2>Java • Spring Boot • Microservices • Distributed Systems</h2>
-      <ul class="navigation">
-        <li><a href="#about" class="nav-link">About</a></li>
-        <!--li><a href="#skills" class="nav-link">Skills</a></li-->
-        <li><a href="#projects" class="nav-link">Projects</a></li>
-        
-         <!--li><a href="apps.html" class="nav-link">Fun Apps</a></li-->
-      
-       
-        <li><a href="#contact" class="nav-link">Contact</a></li>
-      </ul>
-      <button class="burger-menu" id="burger-menu">
-        <ion-icon class="bars" name="menu-outline"></ion-icon>
-      </button>
-       
-    </nav>
+    <!-- =========================
+         Navigation
+    ========================== -->
+    <nav aria-label="Main navigation">
+      <div class="nav-brand">
+        <h1>RYAN REY BONDOC</h1>
+        <p>Senior Backend Engineer</p>
+      </div>
 
-    <section class="hero-about">
-      <!-- Hero Section -->
-      <section class="hero" id="about">
-         <div class="bio animate__animated animate__shakeX">
-         
-         
-          <p class="bio-text">
 
-            I design and build scalable backend systems, APIs, microservices, and AI-powered applications.
-          </p>
-           <p class="bio-text">
+  <ul class="navigation">
+    <li>
+      <a href="#about" class="nav-link">About</a>
+    </li>
+    <li>
+      <a href="#projects" class="nav-link">Projects</a>
+    </li>
+    <li>
+      <a href="#expertise" class="nav-link">Expertise</a>
+    </li>
+    <li>
+      <a href="#contact" class="nav-link">Contact</a>
+    </li>
+  </ul>
 
-           15+ years of software engineering experience 
-           </p>
-           
-        </div>
-        <img
-          src="assets/images/wfh_1.avif"
-          alt="ryan-estebe-bondoc"
-          loading="lazy"
-          class="hero-img"
-        />
-       
-      </section>
+  <button
+    class="burger-menu"
+    id="burger-menu"
+    type="button"
+    aria-label="Open navigation menu"
+    aria-expanded="false"
+    aria-controls="main-navigation"
+  >
+    <ion-icon class="bars" name="menu-outline"></ion-icon>
+  </button>
+</nav>
 
-      <!-- More about -->
-      <section class="more-about">
-        <p>
-         Senior Backend Engineer with 15+ years of experience designing and developing backend systems, REST APIs, microservices, and distributed applications across fintech, SaaS, telecommunications, and travel.
-</p>
-       <p>
-My primary expertise is Java and Spring Boot, with additional experience in Python, C#, cloud platforms, databases, messaging, and DevOps.
-</p>
-       <p>
-I'm currently expanding into AI-powered software engineering, focusing on integrating LLMs, AI agents, and intelligent automation into production-oriented backend systems.
-</p>
-      
-      </section>
-    </section>
-    <!-- Skills section -->
-    <section class="skills" id="skills" style="display: none">
-      <h2 class="skill-header">My Top Skills</h2>
+<!-- =========================
+     Hero / About
+========================== -->
+<main>
+  <section class="hero-about" id="about">
+    <div class="hero">
+      <div class="bio animate__animated animate__fadeInLeft">
+        <p class="eyebrow">JAVA • SPRING BOOT • MICROSERVICES</p>
 
-      <div class="skills-wrapper">
-        <div class="first-set animate__animated animate__pulse">
-          <img
-            src="assets/icons/icons8-html-5.svg"
-            alt=""
-            loading="lazy"
-            class="icon icon-card"
-          />
-          <img
-            src="assets/icons/icons8-css3.svg"
-            alt=""
-            loading="lazy"
-            class="icon icon-card"
-          />
-          <img
-            src="assets/icons/icons8-javascript.svg"
-            alt=""
-            loading="lazy"
-            class="icon icon-card"
-          />
-        </div>
+        <h2>
+          Building scalable backend systems and intelligent applications.
+        </h2>
 
-        <div class="second-set animate__animated animate__pulse">
-          <img
-            src="assets/icons/icons8-bootstrap.svg"
-            alt=""
-            loading="lazy"
-            class="icon icon-card"
-          />
-          <img
-            src="assets/icons/icons8-react-native.svg"
-            alt=""
-            loading="lazy"
-            class="icon icon-card"
-          />
-          <img
-            src="assets/icons/icons8-git.svg"
-            alt=""
-            loading="lazy"
-            class="icon icon-card"
-          />
+        <p class="bio-text">
+          I design and build scalable backend systems, REST APIs,
+          microservices, distributed services, and AI-powered applications.
+        </p>
+
+        <p class="bio-text experience-highlight">
+          <strong>15+ years of software engineering experience.</strong>
+        </p>
+
+        <div class="hero-actions">
+          <a href="#projects" class="button primary-button">
+            View My Work
+          </a>
+
+          <a href="#contact" class="button secondary-button">
+            Get In Touch
+          </a>
         </div>
       </div>
-    </section>
 
-    <!-- Projects section -->
-    <section class="projects" id="projects">
-      <h2 class="projects-title">Some Recent Projects</h2>
-      <div class="projects-container">
-         <div class="project-container project-card">
-          <img
-            src="assets/images/fintech.png"
-            alt="Online Banking"
-            loading="lazy"
-            class="project-pic"
-          />
-          <h3 class="project-title">Enterprise Fintech Microservices Platform</h3>
-          <p class="project-details">
-            A production-inspired fintech platform built with Java, Spring Boot, microservices, Docker, and React.
-
-Current capabilities include user registration and authentication, payment initiation, Stripe and PayPal integration, and frontend payment workflows.
-
-The platform is being extended with AI-powered financial services, exploring LLM integration, tool calling, intelligent transaction workflows, and AI-assisted financial applications.
-          </p>
-           <a href="https://github.com/ryryanb/fintech_core/" target="_blank" class="project-link">Repository</a>
-          <br/>
-           <a href="https://github.com/users/ryryanb/projects/1/" target="_blank" class="project-link">Kanban</a>
-         <br/>
-          <a href="https://fintech-core-frontend.vercel.app/" target="_blank" class="project-link">Demo</a>
-        </div>
-        
-        <div class="project-container project-card">
-          <img
-            src="assets/images/telstrapaybill.png"
-            alt="Telco CMS"
-            loading="lazy"
-            class="project-pic"
-          />
-          <h3 class="project-title">Telco Content Management & Web Development</h3>
-          <p class="project-details">
-            As the team lead for a Telco's Content Management System, I spearheaded a group of developers and QA professionals. In this capacity, we efficiently processed work orders from various departments, translating requirements into user-friendly web interfaces. My focus on responsive design and meticulous backend development ensured efficient data processing for forms ranging from feedback to order requests.
-Collaborating closely with cross-functional teams, including designers and department representatives, I facilitated agile project management. This approach ensured that the web solutions we delivered not only met functional needs but also exceeded aesthetic expectations. This experience honed my skills in leadership, effective communication, and rapid adaptation to dynamic project requirements. Overall, our contributions played a pivotal role in enhancing internal processes and user interactions within the telco's digital ecosystem.
-          </p>
-          <a href="https://www.telstra.com.au/support/account-payment" target="_blank" class="project-link">Check it Out</a>
-        </div>
-        <div class="project-container project-card">
-          <img
-            src="assets/images/confmessenger.png"
-            alt="Confidential Messenger"
-            loading="lazy"
-            class="project-pic"
-          />
-          <h3 class="project-title">Secure Chat Application with Azure Confidential Computing</h3>
-          <p class="project-details">
-            I took charge of designing and implementing a Proof of Concept for a messenger/chat application leveraging the cutting-edge confidential computing capabilities of Microsoft Azure. As the lead developer, I utilized C# and .NET to ensure the highest standards of security and privacy for user communications.
-The implementation of Azure's confidential computing provided a secure enclave for our chat application, ensuring end-to-end encryption and protection of sensitive user data. This effort not only showcased my proficiency in secure coding practices but also demonstrated a deep understanding of cloud technologies, particularly within the Azure ecosystem. The project laid the foundation for future endeavors in developing secure and privacy-centric applications in the ever-evolving landscape of cloud computing.
-          </p>
-         <a href="https://github.com/stefanotempesta/ConfidentialMessenger" target="_blank" class="project-link">Check it Out</a>
-        </div>
-         <div class="project-container project-card">
-          <img
-            src="assets/images/bnc.png"
-            alt="Online Banking"
-            loading="lazy"
-            class="project-pic"
-          />
-          <h3 class="project-title">Online Banking System Development</h3>
-          <p class="project-details">
-            As part of the development team for an online banking system, I played a key role in crafting essential modules and functionalities. My primary responsibilities included coding features such as user authentication, account management, transaction processing and external systems integration. By leveraging my expertise in backend development, I contributed to the creation of a secure, efficient, and user-friendly platform.
-One of my significant achievements was implementing robust localization features, ensuring the seamless adaptation of the system to diverse regions. This experience exemplifies my ability to collaborate within a team, delivering impactful solutions in the dynamic landscape of financial technology.
-          </p>
-          <a href="https://banking.bnconline.com/bncbank/bncbanking/index.html#f" target="_blank" class="project-link">Check it Out</a>
-        </div>
-      </div>
-     
-    </section>
-
-    <!-- Contact section -->
-    <section class="contact" id="contact">
-      <h2>Get In Touch With Me</h2>
-      <div class="contact-form-container">
-        <div class="contact-form">
-          <form action="https://formspree.io/f/xeqbdqwn" method="POST">
-            <div class="form-control">
-              <label for="name">Name</label>
-              <input
-                type="text"
-                id="name"
-                name="sender-name"
-                placeholder="Enter Your Name"
-                class="input-field"
-                required
-              />
-            </div>
-            <div class="form-control">
-              <label for="email">Email</label>
-              <input
-                type="email"
-                id="email"
-                name="sender-email"
-                placeholder="Enter Your Email"
-                class="input-field"
-                required
-              />
-            </div>
-            <div class="form-control">
-              <label for="message">Message</label>
-              <textarea
-                id="message"
-                cols="60"
-                rows="10"
-                placeholder="Enter Your Message"
-                name="message"
-                class="input-field"
-                required
-              ></textarea>
-            </div>
-            <input
-              type="submit"
-              value="Submit"
-              id="submit-btn"
-              class="submit-btn"
-            />
-          </form>
-        </div>
-      </div>
-    </section>
-
-    <!-- Social accounts - Fixed to the right -->
-    <div class="socials">
-      <!--a href="#" target="_blank"
-        ><img
-          src="assets/icons/icons8-twitter-circled.gif"
-          alt="Twitter"
-          loading="lazy"
-          class="socicon"
-      /></a-->
-      <!-- href="#" target="_blank"
-        ><img
-          src="assets/icons/icons8-instagram.gif"
-          alt="Instagram"
-          loading="lazy"
-          class="socicon"
-      /></a-->
-      <a href="https://www.linkedin.com/in/ryanreybondoc" target="_blank"
-        ><img
-          src="assets/icons/icons8-linkedin-circled.gif"
-          alt="Linkedin"
-          loading="lazy"
-          class="socicon"
-      /></a>
-      <a href="https://github.com/ryryanb" target="_blank"
-        ><img src="assets/icons/icons8-github.gif" alt="Github" class="socicon"
-      /></a>
-     <a href="https://www.upwork.com/freelancers/~0174372f13d9984160" target="_blank"
-        ><img
-          src="assets/icons/upwork.png"
-          alt="Upwork"
-          loading="lazy"
-          class="socicon"
-      /></a>
+      <img
+        src="assets/images/wfh_1.avif"
+        alt="Ryan Rey Bondoc working remotely"
+        loading="eager"
+        class="hero-img"
+      />
     </div>
 
-    <!-- Scroll to top -->
-    <i class="scroll-up" id="scroll-up"
-      ><img
-        src="assets/icons/icons8-upward-arrow.gif"
-        class="socicon up-arrow"
-        alt="scroll-up"
-    /></i>
+    <!-- =========================
+         Professional Summary
+    ========================== -->
+    <div class="more-about">
+      <h2>About Me</h2>
 
-    <!-- Footer section -->
-    <footer>
-     
-      <p class="copy">
-        <a href="https://www.linkedin.com/in/ryanreybondoc/" target="_blank"
-          >Ryan Rey Bondoc</a
-        >
+      <p>
+        Senior Backend Engineer with 15+ years of experience designing and
+        developing backend systems, REST APIs, microservices, and
+        distributed applications across fintech, SaaS,
+        telecommunications, and travel.
       </p>
-    </footer>
 
-    <!-- Website scripts -->
-    <script src="assets/js/app.js"></script>
+      <p>
+        My primary expertise is Java and Spring Boot, supported by
+        experience with Python, C#, relational databases, messaging,
+        Docker, cloud platforms, and DevOps.
+      </p>
 
-    <!-- Ion icons scripts -->
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
-    ></script>
+      <p>
+        I focus on backend architecture, API design, distributed systems,
+        data persistence, security, reliability, and production
+        troubleshooting.
+      </p>
+
+      <p>
+        I'm also applying my backend engineering experience to
+        <strong>AI engineering</strong>, with a focus on LLM integration,
+        RAG, AI agents, intelligent automation, and production-oriented
+        AI applications.
+      </p>
+    </div>
+  </section>
+
+  <!-- =========================
+       Featured Projects
+  ========================== -->
+  <section class="projects" id="projects">
+    <h2 class="projects-title">Featured Projects</h2>
+
+    <p class="section-intro">
+      A selection of professional experience and engineering projects
+      demonstrating backend architecture, financial systems, cloud
+      security, and distributed application development.
+    </p>
+
+    <div class="projects-container">
+
+      <!-- FinTech Core -->
+      <article class="project-container project-card">
+        <img
+          src="assets/images/fintech.png"
+          alt="FinTech Core microservices platform"
+          loading="lazy"
+          class="project-pic"
+        />
+
+        <p class="project-category">MICROSERVICES • FINTECH • JAVA</p>
+
+        <h3 class="project-title">
+          Enterprise FinTech Microservices Platform
+        </h3>
+
+        <p class="project-details">
+          A production-inspired financial platform built with Java,
+          Spring Boot, microservices, PostgreSQL, Docker, and React.
+        </p>
+
+        <p class="project-details">
+          Current capabilities include user registration and
+          authentication, financial account management, transaction
+          workflows, payment initiation, and Stripe and PayPal
+          integration.
+        </p>
+
+        <p class="project-details">
+          The platform is being extended toward AI-powered financial
+          services, including LLM integration, tool calling, intelligent
+          transaction workflows, and AI-assisted applications.
+        </p>
+
+        <div class="project-links">
+          <a
+            href="https://github.com/ryryanb/fintech_core/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="project-link"
+          >
+            Repository
+          </a>
+
+          <a
+            href="https://github.com/users/ryryanb/projects/1/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="project-link"
+          >
+            Project Board
+          </a>
+
+          <a
+            href="https://fintech-core-frontend.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="project-link"
+          >
+            Live Demo
+          </a>
+        </div>
+      </article>
+
+      <!-- Telco -->
+      <article class="project-container project-card">
+        <img
+          src="assets/images/telstrapaybill.png"
+          alt="Telco content management and web development project"
+          loading="lazy"
+          class="project-pic"
+        />
+
+        <p class="project-category">TELCO • WEB DEVELOPMENT • TEAM LEAD</p>
+
+        <h3 class="project-title">
+          Telco Content Management &amp; Web Development
+        </h3>
+
+        <p class="project-details">
+          Team lead for a telecommunications Content Management System,
+          leading developers and QA professionals responsible for
+          delivering internal web applications and business workflows.
+        </p>
+
+        <p class="project-details">
+          Responsibilities included translating business requirements
+          into web solutions, developing backend functionality, processing
+          application data, and collaborating with designers and
+          cross-functional stakeholders.
+        </p>
+
+        <p class="project-details">
+          The role combined hands-on engineering with technical leadership,
+          agile delivery, requirements analysis, and production-oriented
+          problem solving.
+        </p>
+
+        <div class="project-links">
+          <a
+            href="https://www.telstra.com.au/support/account-payment"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="project-link"
+          >
+            View Project
+          </a>
+        </div>
+      </article>
+
+      <!-- Confidential Computing -->
+      <article class="project-container project-card">
+        <img
+          src="assets/images/confmessenger.png"
+          alt="Secure messaging application using Azure Confidential Computing"
+          loading="lazy"
+          class="project-pic"
+        />
+
+        <p class="project-category">
+          CLOUD SECURITY • AZURE • C# / .NET
+        </p>
+
+        <h3 class="project-title">
+          Secure Chat Application with Azure Confidential Computing
+        </h3>
+
+        <p class="project-details">
+          Proof of Concept for a secure messaging application exploring
+          Microsoft Azure Confidential Computing and privacy-focused
+          application architecture.
+        </p>
+
+        <p class="project-details">
+          As lead developer, I designed and implemented the application
+          using C# and .NET while exploring secure processing of sensitive
+          communication data within a confidential computing environment.
+        </p>
+
+        <p class="project-details">
+          The project provided practical experience with cloud security,
+          trusted execution environments, secure application design, and
+          privacy-oriented architecture.
+        </p>
+
+        <div class="project-links">
+          <a
+            href="https://github.com/stefanotempesta/ConfidentialMessenger"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="project-link"
+          >
+            Repository
+          </a>
+        </div>
+      </article>
+
+      <!-- Online Banking -->
+      <article class="project-container project-card">
+        <img
+          src="assets/images/bnc.png"
+          alt="Online banking system"
+          loading="lazy"
+          class="project-pic"
+        />
+
+        <p class="project-category">
+          FINTECH • BANKING • BACKEND ENGINEERING
+        </p>
+
+        <h3 class="project-title">
+          Online Banking System Development
+        </h3>
+
+        <p class="project-details">
+          Backend engineering work on an online banking platform,
+          contributing to authentication, account management, transaction
+          processing, and integration with external systems.
+        </p>
+
+        <p class="project-details">
+          I also contributed to localization capabilities that enabled the
+          platform to support users across different regions.
+        </p>
+
+        <p class="project-details">
+          This experience strengthened my understanding of secure
+          financial workflows, backend development, integration, and
+          enterprise software delivery.
+        </p>
+
+        <div class="project-links">
+          <a
+            href="https://banking.bnconline.com/bncbank/bncbanking/index.html#f"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="project-link"
+          >
+            View Project
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- =========================
+       Engineering Expertise
+  ========================== -->
+  <section class="expertise" id="expertise">
+    <h2>Engineering Expertise</h2>
+
+    <p class="section-intro">
+      Areas where I focus my engineering practice and continue to deepen
+      my expertise.
+    </p>
+
+    <div class="expertise-container">
+
+      <article class="expertise-card">
+        <h3>Backend Architecture</h3>
+        <p>
+          Designing maintainable backend systems, service boundaries,
+          APIs, persistence layers, and production-oriented architectures.
+        </p>
+      </article>
+
+      <article class="expertise-card">
+        <h3>Distributed Systems</h3>
+        <p>
+          Working with microservices, asynchronous communication,
+          transactions, reliability, failure handling, scalability, and
+          consistency.
+        </p>
+      </article>
+
+      <article class="expertise-card">
+        <h3>API Engineering</h3>
+        <p>
+          Designing secure, maintainable REST APIs with clear contracts,
+          validation, authentication, authorization, and error handling.
+        </p>
+      </article>
+
+      <article class="expertise-card">
+        <h3>Data &amp; Persistence</h3>
+        <p>
+          Experience with relational databases, SQL, schema design,
+          transactions, persistence, and data-intensive backend systems.
+        </p>
+      </article>
+
+      <article class="expertise-card">
+        <h3>Security</h3>
+        <p>
+          Authentication, authorization, JWT, cryptographic signing,
+          secure application design, and cloud security concepts.
+        </p>
+      </article>
+
+      <article class="expertise-card">
+        <h3>AI Engineering</h3>
+        <p>
+          Applying backend engineering principles to LLM integration,
+          RAG, AI agents, tool calling, and intelligent automation.
+        </p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- =========================
+       Contact
+  ========================== -->
+  <section class="contact" id="contact">
+    <h2>Let's Work Together</h2>
+
+    <p class="section-intro">
+      I'm interested in remote opportunities involving backend engineering,
+      distributed systems, fintech, cloud applications, and AI-powered
+      software.
+    </p>
+
+    <div class="contact-form-container">
+      <div class="contact-form">
+        <form
+          action="https://formspree.io/f/xeqbdqwn"
+          method="POST"
+        >
+          <div class="form-control">
+            <label for="name">Name</label>
+
+            <input
+              type="text"
+              id="name"
+              name="sender-name"
+              placeholder="Enter Your Name"
+              class="input-field"
+              autocomplete="name"
+              required
+            />
+          </div>
+
+          <div class="form-control">
+            <label for="email">Email</label>
+
+            <input
+              type="email"
+              id="email"
+              name="sender-email"
+              placeholder="Enter Your Email"
+              class="input-field"
+              autocomplete="email"
+              required
+            />
+          </div>
+
+          <div class="form-control">
+            <label for="message">Message</label>
+
+            <textarea
+              id="message"
+              name="message"
+              rows="10"
+              placeholder="Enter Your Message"
+              class="input-field"
+              required
+            ></textarea>
+          </div>
+
+          <input
+            type="submit"
+            value="Send Message"
+            id="submit-btn"
+            class="submit-btn"
+          />
+        </form>
+      </div>
+    </div>
+
+    <div class="contact-links">
+      <a
+        href="https://www.linkedin.com/in/ryanreybondoc"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        LinkedIn
+      </a>
+
+      <a
+        href="https://github.com/ryryanb"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        GitHub
+      </a>
+
+      <a
+        href="https://www.upwork.com/freelancers/~0174372f13d9984160"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Upwork
+      </a>
+    </div>
+  </section>
+</main>
+
+<!-- =========================
+     Social Links
+========================== -->
+<aside class="socials" aria-label="Social links">
+  <a
+    href="https://www.linkedin.com/in/ryanreybondoc"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="LinkedIn"
+  >
+    <img
+      src="assets/icons/icons8-linkedin-circled.gif"
+      alt=""
+      loading="lazy"
+      class="socicon"
+    />
+  </a>
+
+  <a
+    href="https://github.com/ryryanb"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="GitHub"
+  >
+    <img
+      src="assets/icons/icons8-github.gif"
+      alt=""
+      loading="lazy"
+      class="socicon"
+    />
+  </a>
+
+  <a
+    href="https://www.upwork.com/freelancers/~0174372f13d9984160"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Upwork"
+  >
+    <img
+      src="assets/icons/upwork.png"
+      alt=""
+      loading="lazy"
+      class="socicon"
+    />
+  </a>
+</aside>
+
+<!-- =========================
+     Scroll to Top
+========================== -->
+<button
+  class="scroll-up"
+  id="scroll-up"
+  type="button"
+  aria-label="Scroll to top"
+>
+  <img
+    src="assets/icons/icons8-upward-arrow.gif"
+    class="socicon up-arrow"
+    alt=""
+    loading="lazy"
+  />
+</button>
+
+<!-- =========================
+     Footer
+========================== -->
+<footer>
+  <p class="copy">
+    &copy; 2026
+    <a
+      href="https://www.linkedin.com/in/ryanreybondoc/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Ryan Rey Bondoc
+    </a>
+  </p>
+</footer>
+
+<!-- Website scripts -->
+<script src="assets/js/app.js"></script>
+
+<!-- Ionicons -->
+<script
+  type="module"
+  src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+></script>
+
+<script
+  nomodule
+  src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+></script>
+
+
   </body>
 </html>
